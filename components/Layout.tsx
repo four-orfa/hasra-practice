@@ -8,7 +8,7 @@ interface Props {
   children: ReactNode
   title: string
 }
-const Layout: FC<Props> = ({ children, title = 'Welcome to Next.js' }) => {
+const Layout: FC<Props> = ({ children, title }) => {
   return (
     <div className="flex flex-col justify-center items-center min-h-screen text-gray-600 text-sm font-mono">
       <Head>
