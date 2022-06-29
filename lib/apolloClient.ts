@@ -10,6 +10,7 @@ import { onError } from '@apollo/client/link/error'
 import { concatPagination } from '@apollo/client/utilities'
 import merge from 'deepmerge'
 import isEqual from 'lodash/isEqual'
+import fetch from 'cross-fetch'
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__'
 
@@ -28,6 +29,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 const httpLink = new HttpLink({
   uri: 'https://nextjs-graphql-with-prisma-simple.vercel.app/api', // Server URL (must be absolute)
   credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
+  fetch,
 })
 
 function createApolloClient() {
@@ -36,6 +38,7 @@ function createApolloClient() {
     // link: from([errorLink, httpLink]),
     link: new HttpLink({
       uri: 'https://basic-practice.hasura.app/v1/graphql',
+      fetch,
     }),
     cache: new InMemoryCache(),
   })
