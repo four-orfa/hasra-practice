@@ -19,7 +19,6 @@ const UserItem: FC<Props> = memo(function UserItem({
   delete_users_by_pk,
   setEditedUser,
 }) {
-  console.log('UserItem rendered')
   return (
     <div className="my-1">
       <p className="mr-2">{user.name}</p>
